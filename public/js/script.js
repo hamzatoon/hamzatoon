@@ -20,11 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     let thumbnailsHtml = '<h2>Available Thumbnails:</h2>';
                     thumbnailSizes.forEach((size, index) => {
+                        const downloadUrl = `/api/download?url=${encodeURIComponent(size.url)}&filename=youtube_thumbnail_${size.name.toLowerCase().replace(' ', '_')}.jpg`;
                         thumbnailsHtml += `
                             <div class="thumbnail-container">
                                 <h3>${size.name}</h3>
                                 <img src="${size.url}" alt="${size.name} Thumbnail">
-                                <a href="/download?url=${encodeURIComponent(size.url)}&filename=youtube_thumbnail_${size.name.toLowerCase().replace(' ', '_')}.jpg" class="download-btn">Download</a>
+                                <a href="${downloadUrl}" class="download-btn">Download</a>
                             </div>
                         `;
                     });
